@@ -1,6 +1,6 @@
 <?php
 // delete.php — deletes a review, then redirects back to admin
-
+// This file is used for grabbing the id of the review, deleting it, preparing it for the database then executing afterwards redirecting the user back to the admin.php panel
 require 'includes/connect.php';
 
 // get the id from the URL

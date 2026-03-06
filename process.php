@@ -1,6 +1,7 @@
 <?php
 // process.php — validates and inserts a new book review
-
+// This file basiclly just processes the inputs the user puts in. Making sure the user is not trying to inject sql statements into the email input location
+// the insert uses pre-prepared sql statements so the user cannot inject sql statements where they are meant to input other things.
 require "includes/connect.php";
 
 // Only run on POST
@@ -32,7 +33,7 @@ if ($ratingRaw === '') {
     }
 }
 
-// If errors, show them and stop — do not insert
+// Shows the user the errors that aren't allowing them to submit
 if (!empty($errors)) {
     echo "<ul>";
     foreach ($errors as $error) {

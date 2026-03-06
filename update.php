@@ -1,5 +1,6 @@
 <?php
 // update.php — load a review into a form and save changes
+// Simple File All this file does is just update the sql table based on the inputs given
 
 require "includes/connect.php";
 

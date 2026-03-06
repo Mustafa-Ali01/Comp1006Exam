@@ -1,4 +1,9 @@
-<?php 
+
+
+<?php
+// This file is used for connecting to the database, there's also a try and catch here to tell you if 
+// your database connection has failed 
+
 $host = ""; //hostname
 $db = ""; //database name
 $user = ""; //username
