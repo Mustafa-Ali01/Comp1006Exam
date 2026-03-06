@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS book_manager;
+USE book_manager;
+
+CREATE TABLE IF NOT EXISTS reviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    author VARCHAR(150) NOT NULL,
+    rating TINYINT NOT NULL,
+    review_text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
