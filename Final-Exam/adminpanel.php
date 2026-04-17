@@ -40,3 +40,41 @@ if (isset($_GET['del'])) {
 
 $images = $pdo->query("SELECT * FROM images ORDER BY id DESC")->fetchAll();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Gallery</title>
+</head>
+<body>
+
+    <h1>Gallery Manager</h1>
+    <div class="admin-info">
+        Logged in as: <?= htmlspecialchars($_SESSION['admin']) ?> | <a href="logout.php">Logout</a>
+    </div>
+    
+    <?php if ($msg): ?>
+        <p class="msg"><?= $msg ?></p>
+    <?php endif; ?>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Image Title" required>
+        <input type="file" name="image" required>
+        <button name="upload">Upload</button>
+    </form>
+
+    <hr>
+
+    <div class="gallery-grid">
+        <?php foreach ($images as $row): ?>
+            <div class="gallery-item">
+                <p><?= htmlspecialchars($row['title']) ?></p>
+                <img src="<?= $row['file_path'] ?>" width="150">
+                <a href="?del=<?= $row['id'] ?>" class="btn-delete" onclick="return confirm('Delete this image?')">Delete</a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+</body>
+</html>
