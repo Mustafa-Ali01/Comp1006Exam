@@ -18,6 +18,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $alert = "Account created! You can now log in.";
         }
     }
+
+    // LOGIN
+    if (isset($_POST['do_login'])) {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->execute([$user]);
+        $found = $stmt->fetch();
+
+        if ($found && password_verify($pass, $found['password'])) {
+            $_SESSION['logged_in'] = $found['username'];
+            header("Location: admin_panel.php");
+            exit;
+        } else {
+            $alert = "Invalid login details.";
+        }
+    }
 }
 ?>
 
