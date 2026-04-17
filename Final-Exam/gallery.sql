@@ -1,15 +1,18 @@
-CREATE DATABASE IF NOT EXISTS image_gallery;
-USE image_gallery;
+-- Create the database and tables
+CREATE DATABASE IF NOT EXISTS gallery_db;
+USE gallery_db;
 
-CREATE TABLE IF NOT EXISTS users (
+-- Table for admin accounts
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL -- Storing the hashed password
 );
 
-CREATE TABLE IF NOT EXISTS images (
+-- Table to store image metadata
+CREATE TABLE images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
-    img_path VARCHAR(255) NOT NULL
+    file_path VARCHAR(255) NOT NULL -- Path to the file in /uploads/
 );
